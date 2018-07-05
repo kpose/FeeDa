@@ -8,4 +8,6 @@
     <color name="lightRed">#e42d40</color>
     <color name="lightGreen">#19c709</color>
     <color name="darkGreen">#052802</color>
+    <color name="overlayBackground">#777679</color>
+    <color name="overlayActionBar">#e99725</color>
 </resources>
