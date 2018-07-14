@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/background_immage"
-        android:src="@drawable/background"
+        android:background="@drawable/background"
         android:scaleType="centerCrop"/>
 
     <LinearLayout

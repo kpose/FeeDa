@@ -34,6 +34,7 @@
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:id="@+id/toolbar"
                 app:title="Food Name"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="parallax">
@@ -109,7 +110,7 @@
                             android:layout_weight="9"
                             android:layout_height="wrap_content"
                             android:id="@+id/food_price"
-                            android:text="1,000"
+                            android:text="10"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             android:textStyle="bold"/>

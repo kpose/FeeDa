@@ -1,25 +1,26 @@
 package com.example.kpose.feeda.Model;
 
 public class Food {
-    private  String Name1,Image,description,menuId,price;
+    private String Name,Image,Description,Price,Discount,MenuId;
 
     public Food() {
     }
 
-    public Food(String name1, String image, String description, String menuId, String price) {
-        Name1 = name1;
+    public Food(String name, String image, String description, String price, String discount, String menuId) {
+        Name = name;
         Image = image;
-        this.description = description;
-        this.menuId = menuId;
-        this.price = price;
+        Description = description;
+        Price = price;
+        Discount = discount;
+        MenuId = menuId;
     }
 
-    public String getName1() {
-        return Name1;
+    public String getName() {
+        return Name;
     }
 
-    public void setName1(String name1) {
-        Name1 = name1;
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getImage() {
@@ -31,26 +32,34 @@ public class Food {
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
+        Description = description;
     }
 
     public String getPrice() {
-        return price;
+        return Price;
     }
 
     public void setPrice(String price) {
-        this.price = price;
+        Price = price;
+    }
+
+    public String getDiscount() {
+        return Discount;
+    }
+
+    public void setDiscount(String discount) {
+        Discount = discount;
+    }
+
+    public String getMenuId() {
+        return MenuId;
+    }
+
+    public void setMenuId(String menuId) {
+        MenuId = menuId;
     }
 }
