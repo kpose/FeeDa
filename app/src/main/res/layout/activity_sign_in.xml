@@ -27,7 +27,6 @@
             android:id="@+id/edtPhone"
             android:hint="Phone Number"
             android:textColorHint="@android:color/white"
-
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:inputType="phone"
@@ -57,7 +56,7 @@
         android:layout_marginLeft="15dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="8dp"
-        android:background="@color/lightGreen"
+        android:background="@color/lightRed"
         android:shadowColor="@android:color/black"
         />
 

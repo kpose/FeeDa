@@ -63,7 +63,7 @@
             android:textColor="@android:color/white"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:background="@color/lightGreen"
+            android:background="@color/colorPrimary"
             android:shadowColor="@android:color/black"
             />
 

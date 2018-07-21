@@ -19,8 +19,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity android:name=".SignIn" />
         <activity android:name=".SignUp" />
@@ -30,10 +28,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".FoodList" />
         <activity android:name=".FoodDetail" />
-        <activity android:name=".Cart">
-
-
-        </activity>
+        <activity android:name=".Cart"></activity>
+        <activity android:name=".OrderStatus"></activity>
     </application>
 
 </manifest>
