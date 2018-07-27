@@ -28,8 +28,13 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".FoodList" />
         <activity android:name=".FoodDetail" />
-        <activity android:name=".Cart"></activity>
-        <activity android:name=".OrderStatus"></activity>
+        <activity android:name=".Cart" />
+        <activity android:name=".OrderStatus" />
+
+        <service
+            android:name=".Service.ListenOrder"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

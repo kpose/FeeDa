@@ -17,6 +17,8 @@ import android.view.View;
 
 import android.widget.Toast;
 
+import com.example.kpose.feeda.Common.Common;
+import com.example.kpose.feeda.Database.Database;
 import com.example.kpose.feeda.Interface.ItemClickListener;
 import com.example.kpose.feeda.Model.Food;
 import com.example.kpose.feeda.ViewHolder.FoodViewHolder;
@@ -46,7 +48,9 @@ public class FoodList extends AppCompatActivity {
     FirebaseRecyclerAdapter<Food, FoodViewHolder> searchAdapter;
     List<String> suggestList = new ArrayList<>();
     MaterialSearchBar materialSearchBar;
-    
+
+    //Favorites
+    Database  localDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,9 @@ public class FoodList extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         foodList = database.getReference("Foods");
+
+        //local DB
+        localDB = new Database(this);
 
         recyclerView = findViewById(R.id.recycler_food);
         recyclerView.setHasFixedSize(true);
@@ -78,7 +85,13 @@ public class FoodList extends AppCompatActivity {
 
         if (!categoryId.isEmpty() && categoryId != null)
         {
-            loadListFood(categoryId);
+            if (Common.isConnectedToInternet(getBaseContext()))
+                    loadListFood(categoryId);
+            else
+            {
+                Toast.makeText(FoodList.this, "Please Check Your Connection!! ", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         
         //Search
@@ -142,10 +155,34 @@ public class FoodList extends AppCompatActivity {
                 foodList.orderByChild("Name").equalTo(text.toString())
         ) {
             @Override
-            protected void populateViewHolder(FoodViewHolder viewHolder, Food model, int position) {
+            protected void populateViewHolder(final FoodViewHolder viewHolder, final Food model, final int position) {
                 viewHolder.food_name.setText(model.getName());
                 Picasso.get().load(model.getImage())
                         .into(viewHolder.food_image);
+
+                //Add Favorites
+
+                if (localDB.isFavorites(adapter.getRef(position).getKey()))
+                    viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+
+                //click to change favorite status
+
+                viewHolder.fav_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!localDB.isFavorites(adapter.getRef(position).getKey()))
+                        {
+                            localDB.addToFavorites(adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(FoodList.this, ""+model.getName()+" was added to your Favorites", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            localDB.removeFromFavorites(adapter.getRef(position).getKey());
+                            viewHolder.fav_image.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            Toast.makeText(FoodList.this, ""+model.getName()+" was removed from your Favorites", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
                 final  Food local = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
@@ -186,7 +223,7 @@ public class FoodList extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,
                 R.layout.food_item,
                 FoodViewHolder.class,
-                foodList.orderByChild("MenuId").equalTo(categoryId))
+                foodList.orderByChild("menuId").equalTo(categoryId))
 
          {
             @Override

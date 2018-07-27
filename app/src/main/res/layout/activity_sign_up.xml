@@ -54,6 +54,17 @@
             android:inputType="textPassword"
             />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtSecureCode"
+            android:hint="Secure Code"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            />
+
     </LinearLayout>
 
 

@@ -3,26 +3,27 @@ package com.example.kpose.feeda.Model;
 public class User {
     private String Name;
     private String Password;
-    private String Phone;
+    private String phone;
     private String IsStaff;
+    private String secureCode;
 
     public User() {
-
     }
 
-    public User(String name, String password) {
+    public User(String name, String password, String secureCode) {
         Name = name;
         Password = password;
         IsStaff = "false";
+        this.secureCode = secureCode;
 
     }
 
-    public String getIsStaff() {
-        return IsStaff;
+    public String getSecureCode() {
+        return secureCode;
     }
 
-    public void setIsStaff(String isStaff) {
-        IsStaff = isStaff;
+    public void setSecureCode(String secureCode) {
+        this.secureCode = secureCode;
     }
 
     public String getName() {
@@ -42,10 +43,18 @@ public class User {
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
+    }
+
+    public String getIsStaff() {
+        return IsStaff;
+    }
+
+    public void setIsStaff(String isStaff) {
+        IsStaff = isStaff;
     }
 }
